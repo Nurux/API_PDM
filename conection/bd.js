@@ -2,7 +2,7 @@ const mysql = require('mysql');
 
 const connection = mysql.createPool({
     host: 'db4free.net',
-    port: process.env.PORT,
+    port: process.env.PORTA,
     user: process.env.USER,
     password: process.env.PASSWORD,
     database: process.env.DATABASE,
