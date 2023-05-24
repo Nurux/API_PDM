@@ -3,13 +3,13 @@ const rota = express.Router();
 const Login = require('../middleware/login')
 const mysql = require('../conection/bd').connection;
 
-rota.get('/', (req, res) => {
+rota.get('/:id', (req, res) => {
     mysql.getConnection((error, cnx) => {
         if(error){ res.status(500).send({ error: error})}
 
         cnx.query(
             'Select * from agenda Where id_user = ?',
-            [req.body.id], 
+            [req.params.id], 
 
             (err, results, fields) =>{
                 cnx.release();
