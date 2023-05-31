@@ -79,6 +79,7 @@ rota.post('/login', (req, res) =>{
 
                     return res.status(200).send({
                         mensagem: 'Autenticado com sucesso',
+                        id_usuario: results[0].id_user,
                         token: token
                     })
                 }
