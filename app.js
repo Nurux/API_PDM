@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
 
 const rota_user =  require('./routes/user');
@@ -7,6 +8,7 @@ const rota_agenda = require('./routes/consultas');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cors());
 
 
 app.use('/user', rota_user);

@@ -77,10 +77,15 @@ rota.post('/login', (req, res) =>{
                         expiresIn: "1 day"
                     })
 
-                    return res.status(200).send({
+                    const response = {
                         mensagem: 'Autenticado com sucesso',
+                        id_usuario: results[0].id_user,
+                        email: results[0].email,
+                        telefone: results[0].tell,
                         token: token
-                    })
+                    }
+
+                    return res.status(200).send(response)
                 }
 
                 return res.status(401).send({mensagem: 'Falha na autenticação'})
