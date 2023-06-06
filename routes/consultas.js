@@ -29,7 +29,7 @@ rota.get('/:id', (req, res) => {
                     })
                 }
 
-                res.status(201).send(response)
+                res.status(200).send(response)
             }
         )
     })
