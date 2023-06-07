@@ -35,13 +35,13 @@ rota.get('/:id', (req, res) => {
     })
 })
 
-rota.post('/local_b', Login, (req, res) => {
+rota.post('/', Login, (req, res) => {
     mysql.getConnection((error, cnx) =>{
         if(error){ res.status(500).send({ error: error})} 
 
         cnx.query(
             'Insert into agenda(nome,idade,raca,tipo,concas,sexo,data,hora,id_user,id_endereco) values(?,?,?,?,?,?,?,?,?,?)',
-            [req.body.nome, req.body.idade, req.body.raca, req.body.tipo, req.body.concas, req.body.sexo, req.body.data, req.body.hora, req.body.id_user, 2],
+            [req.body.nome, req.body.idade, req.body.raca, req.body.tipo, req.body.concas, req.body.sexo, req.body.data, req.body.hora, req.body.id_user, req.body.id_endereco],
 
             (err, results, fields) => {
                 cnx.release();
