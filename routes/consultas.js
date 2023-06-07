@@ -35,13 +35,13 @@ rota.get('/:id', (req, res) => {
     })
 })
 
-rota.post('/', Login, (req, res) => {
+rota.post('/local_b', Login, (req, res) => {
     mysql.getConnection((error, cnx) =>{
         if(error){ res.status(500).send({ error: error})} 
 
         cnx.query(
             'Insert into agenda(nome,idade,raca,tipo,concas,sexo,data,hora,id_user,id_endereco) values(?,?,?,?,?,?,?,?,?,?)',
-            [req.body.nome, req.body.idade, req.body.raca, req.body.tipo, req.body.concas, req.body.sexo, req.body.data, req.body.hora, req.body.id_user, req.body.id_endereco],
+            [req.body.nome, req.body.idade, req.body.raca, req.body.tipo, req.body.concas, req.body.sexo, req.body.data, req.body.hora, req.body.id_user, 2],
 
             (err, results, fields) => {
                 cnx.release();
@@ -49,8 +49,7 @@ rota.post('/', Login, (req, res) => {
                 if(err){ res.status(500).send({ error: err})} 
 
                 res.status(201).send({
-                    mensagem: 'Agendamento feito com sucesso!',
-                    id_agenda: results.insertId
+                    mensagem: 'Agendamento feito com sucesso!'
                 })
             }
         )
@@ -71,8 +70,7 @@ rota.post('/local_a', Login, (req, res) => {
                 if(err){ res.status(500).send({ error: err})} 
 
                 res.status(201).send({
-                    mensagem: 'Agendamento feito com sucesso!',
-                    id_agenda: results.insertId
+                    mensagem: 'Agendamento feito com sucesso!'
                 })
             }
         )
