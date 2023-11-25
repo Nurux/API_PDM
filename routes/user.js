@@ -118,8 +118,6 @@ rota.get('/', (req, res) => {
                             res.status(200).send(response)
                         }
                     )
-                })
-        })
     })
 })
 
