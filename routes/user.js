@@ -115,7 +115,7 @@ rota.get('/', (req, res) => {
                                 user: resultado
                             }
 
-                            res.status(201).send(response)
+                            res.status(200).send(response)
                         }
                     )
                 })
