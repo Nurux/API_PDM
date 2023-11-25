@@ -95,5 +95,34 @@ rota.post('/login', (req, res) =>{
     })
 })
 
+rota.get('/', (req, res) => {
+    mysql.getConnection((err, cnx) => {
+        if(err){
+            return res.status(500).send({
+                error: err
+            })
+        }
+                    cnx.query(
+                        'Select * from usuario',
+
+                        (error, resultado, field) => {
+                            cnx.release()
+
+                            if(error){ return res.status(500).send({ error: error, response: null})}
+
+                            const response = {
+                                mensagem: 'Usuários cadastrados!',
+                                user: resultado
+                            }
+
+                            res.status(201).send(response)
+                        }
+                    )
+                })
+            }
+        })
+    })
+})
+
 
 module.exports = rota;
